@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'app';
+    public notificationOptions = {
+        position: ['top', 'right'],
+        timeOut: 3000,
+        pauseOnHover: true,
+        clickToClose: true,
+        showProgressBar: false
+    };
 }

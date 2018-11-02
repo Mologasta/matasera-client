@@ -1,0 +1,69 @@
+<app-route-wrap [cardView]="false">
+    <div page-card-title>Ride</div>
+    <div page-card-subtitle>Home - Driver - History - Ride</div>
+    <div page-content class="user-info-wr">
+        <div class="left-column">
+            <mat-card class="info-card">
+                <mat-card-content class="info-card-content">
+                    <ul class="list-attr-wr">
+                        <li class="list-attr">
+                            <span class="list-title">Start location </span>
+                            <span class="user-attr">{{ride.startLocation}}</span>
+                        </li>
+                        <li class="list-attr">
+                            <span class="list-title">Start time </span>
+                            <span class="user-attr">{{ride.startTime | date:'short'}}</span>
+                        </li>
+                        <li class="list-attr">
+                            <span class="list-title">End location </span>
+                            <span class="user-attr">{{ride.destinationLocation}}</span>
+                        </li>
+                        <li class="list-attr">
+                            <span class="list-title">End time </span>
+                            <span class="user-attr">{{ride.endTime | date:'short'}}</span>
+                        </li>
+                        <li class="list-attr">
+                            <span class="list-title">Ride state </span>
+                            <span class="user-attr">{{ride.state | rideStates }}</span>
+                        </li>
+                        <li class="list-attr">
+                            <span class="list-title">Duration </span>
+                            <span class="user-attr">{{ride.duration | duration }}</span>
+                        </li>
+                        <li class="list-attr">
+                            <span class="list-title">Distance </span>
+                            <span class="user-attr">{{ride.distance | distance }}</span>
+                        </li>
+                    </ul>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="right-column">
+            <mat-card class="info-card">
+                <mat-card-content class="info-card-content">
+                    <div class="user-avatar">
+                        <img [src]="ride.rider.photo || avatarPlaceholder" alt="avatar">
+                    </div>
+                    <ul class="list-attr-wr">
+                        <li class="list-attr">
+                            <span class="list-title">First name </span>
+                            <span class="user-attr">{{ride.rider.firstName}}</span>
+                        </li>
+                        <li class="list-attr">
+                            <span class="list-title">Last name </span>
+                            <span class="user-attr">{{ride.rider.lastName}}</span>
+                        </li>
+                        <li>
+                            <div class="btn-wrapp w-100">
+                                <button type="button" mat-flat-button="primary" class="w-100 btn-decline"
+                                        (click)="onViewClick(); $event.preventDefault()">View
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</app-route-wrap>
+

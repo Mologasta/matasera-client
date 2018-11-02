@@ -1,0 +1,64 @@
+@import '~@angular/material/theming';
+@import "../../../../assets/styles/move-up-main";
+
+.container {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 80%;
+    height: 800px;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    top: 50%;
+    margin: -400px 0 0 -40%;
+}
+
+.title-main {
+    font-weight: bold;
+    font-size: 100px;
+    color: mat-color($move-up-app-primary);
+}
+.site-info {
+    text-align: center;
+    color: mat-color($move-up-app-primary);
+
+    .welcome {
+        font-size: 16px;
+    }
+}
+
+.form-wr {
+
+    .form-input {
+        width: 360px;
+
+        >* {
+            width: 100%;
+        }
+    }
+
+    .submit-btn-wr{
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .title-main {
+        font-size: 80px;
+    }
+}
+
+@media (max-width: 479px) {
+    .title-main {
+        font-size: 60px;
+    }
+
+    .form-wr {
+
+        .form-input {
+            width: 280px;
+        }
+    }
+}

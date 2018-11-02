@@ -1,0 +1,113 @@
+<app-route-wrap [cardView]="false">
+    <div page-card-title>Rider's request</div>
+    <div page-card-subtitle>Home - Rider's request</div>
+    <div page-content>
+        <div class="user-info-wr">
+            <div class="left-column">
+                <mat-card class="info-card">
+                    <mat-card-content class="info-card-content">
+                        <mat-card-title>Rider characteristics</mat-card-title>
+                        <ul class="list-attr-wr border-bottom">
+                            <li class="list-attr">
+                                <span class="list-title">Age category</span>
+                                <span class="user-attr">{{request.rider.isAdult ? 'Adult' : 'Child'}}</span>
+                            </li>
+                        </ul>
+                        <div class="pref-marker-wr">
+                            <div class="pref-marker"
+                                 [ngClass]="{'selected': isDefinedCharacteristic(request.rider, riderCharacteristics.NEED_HELP)}">
+                                <span>Need a bit of help getting in and out of the car</span>
+                            </div>
+                            <div class="pref-marker"
+                                 [ngClass]="{'selected': isDefinedCharacteristic(request.rider, riderCharacteristics.ELECTRIC_WHEELCHAIR)}">
+                                <span>Use an electric wheelchair</span>
+                            </div>
+                            <div class="pref-marker"
+                                 [ngClass]="{'selected': isDefinedCharacteristic(request.rider, riderCharacteristics.FOLDING_WHEELCHAIR)}">
+                                <span>Use a folding wheelchair</span>
+                            </div>
+                            <div class="pref-marker"
+                                 [ngClass]="{'selected': isDefinedCharacteristic(request.rider, riderCharacteristics.ADVANCED_MEDICAL_NEEDS)}">
+                                <span>Advanced medical needs</span>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="info-card">
+                    <mat-card-content class="info-card-content">
+                        <mat-card-title>Preferences</mat-card-title>
+                        <div class="pref-marker-wr">
+                            <div class="pref-marker">
+                                <span *ngIf="request.rider.smokingPreference === riderSmoking.NO_SMOKING">No smoking</span>
+                                <span *ngIf="request.rider.smokingPreference === riderSmoking.SMOKING">Smoking</span>
+                                <span *ngIf="request.rider.smokingPreference === riderSmoking.NO_PREFERENCES">No preferences</span>
+                            </div>
+                            <div class="pref-marker">
+                                <span *ngIf="request.rider.ridePreference === riderTaxis.NO_TAXIS">No taxis</span>
+                                <span *ngIf="request.rider.ridePreference === riderTaxis.INCLUDE_TAXIS">Only taxis</span>
+                                <span *ngIf="request.rider.ridePreference === riderTaxis.NO_PREFERENCES">No preferences</span>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <i class="material-icons transition-arrow">arrow_forward_ios</i>
+            <div class="left-column">
+                <mat-card class="info-card">
+                    <mat-card-content class="info-card-content">
+                        <mat-card-title>Request</mat-card-title>
+                        <ul class="list-attr-wr border-bottom">
+                            <li class="list-attr">
+                                <span class="list-title">Age category</span>
+                                <span class="user-attr">{{request.isAdult ? 'Adult' : 'Child'}}</span>
+                            </li>
+                        </ul>
+                        <div class="pref-marker-wr">
+                            <div class="pref-marker"
+                                 [ngClass]="{'selected': isDefinedCharacteristic(request, riderCharacteristics.NEED_HELP)}">
+                                <span>Need a bit of help getting in and out of the car</span>
+                            </div>
+                            <div class="pref-marker"
+                                 [ngClass]="{'selected': isDefinedCharacteristic(request, riderCharacteristics.ELECTRIC_WHEELCHAIR)}">
+                                <span>Use an electric wheelchair</span>
+                            </div>
+                            <div class="pref-marker"
+                                 [ngClass]="{'selected': isDefinedCharacteristic(request, riderCharacteristics.FOLDING_WHEELCHAIR)}">
+                                <span>Use a folding wheelchair</span>
+                            </div>
+                            <div class="pref-marker"
+                                 [ngClass]="{'selected': isDefinedCharacteristic(request, riderCharacteristics.ADVANCED_MEDICAL_NEEDS)}">
+                                <span>Advanced medical needs</span>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="info-card">
+                    <mat-card-content class="info-card-content">
+                        <mat-card-title>Preferences</mat-card-title>
+                        <div class="pref-marker-wr">
+                            <div class="pref-marker">
+                                <span *ngIf="request.smokingPreference === riderSmoking.NO_SMOKING">No smoking</span>
+                                <span *ngIf="request.smokingPreference === riderSmoking.SMOKING">Smoking</span>
+                                <span *ngIf="request.smokingPreference === riderSmoking.NO_PREFERENCES">No preferences</span>
+                            </div>
+                            <div class="pref-marker">
+                                <span *ngIf="request.ridePreference === riderTaxis.NO_TAXIS">No taxis</span>
+                                <span *ngIf="request.ridePreference === riderTaxis.INCLUDE_TAXIS">Only taxis</span>
+                                <span *ngIf="request.ridePreference === riderTaxis.NO_PREFERENCES">No preferences</span>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    <div class="btn-wrapp w-100">
+                        <button type="button" mat-flat-button="primary" class="w-100 btn-accept"
+                                (click)="onAcceptClick()">Accept request
+                        </button>
+                        <button type="button" mat-flat-button="primary" class="w-100 btn-accept"
+                                (click)="onRejectClick()">Decline request
+                        </button>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</app-route-wrap>

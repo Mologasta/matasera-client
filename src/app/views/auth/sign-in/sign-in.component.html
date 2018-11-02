@@ -1,0 +1,31 @@
+<div class="background">
+    <div class="container">
+        <div>
+            <span class="title-main">Move Up</span>
+        </div>
+        <div class="site-info">
+            <p>Welcome to Move Up</p>
+            <p>Enter your details in the fields below</p>
+        </div>
+        <div class="form-wr">
+            <form [formGroup]="signInForm">
+                <div class="form-input">
+                    <mat-form-field>
+                        <input [formControlName]="'email'" type="email" matInput placeholder="E-mail">
+                        <mat-error *ngIf="signInForm.controls['email'].invalid">{{getErrorMessage('email')}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-input">
+                    <mat-form-field>
+                        <input [formControlName]="'password'" type="password" matInput placeholder="Password">
+                        <mat-error *ngIf="signInForm.controls['password'].invalid">{{getErrorMessage('password')}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-input submit-btn-wr">
+                    <button mat-raised-button color="primary" type="submit" (click)="signIn()">Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

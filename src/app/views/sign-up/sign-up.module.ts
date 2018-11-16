@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule } from '@angular/material';
 
-import { SignInComponent } from './sign-in/sign-in.component';
-import { AuthRouter } from './auth.router';
+import { SignUpComponent } from './form/form.component';
+import { Router } from './sign-up.router';
 
 @NgModule({
     imports: [
@@ -14,9 +14,9 @@ import { AuthRouter } from './auth.router';
         MatButtonModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forChild(AuthRouter)
+        RouterModule.forChild(Router)
     ],
-    declarations: [SignInComponent]
+    declarations: [SignUpComponent]
 })
-export class AuthModule {
+export class SignUpModule {
 }

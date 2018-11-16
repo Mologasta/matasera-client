@@ -10,6 +10,10 @@ export const AppRouter: Routes = [
                 loadChildren: 'app/views/auth/auth.module#AuthModule'
             },
             {
+                path: 'sign-up',
+                loadChildren: 'app/views/sign-up/sign-up.module#SignUpModule'
+            },
+            {
                 path: '',
                 loadChildren: 'app/views/dashboard/dashboard.module#DashboardModule',
                 canActivate: [AuthGuard]

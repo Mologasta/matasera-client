@@ -1,0 +1,45 @@
+<div class="background">
+    <div class="container">
+        <div>
+            <span class="title-main">Matasera</span>
+        </div>
+        <div class="site-info">
+            <p>Welcome to Matasera</p>
+            <p>Enter your details in the fields below</p>
+        </div>
+        <div class="form-wr">
+            <form [formGroup]="signUpForm">
+                <div class="form-input">
+                    <mat-form-field>
+                        <input [formControlName]="'email'" type="email" matInput placeholder="E-mail">
+                        <mat-error *ngIf="signUpForm.controls['email'].invalid">{{getErrorMessage('email')}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-input">
+                    <mat-form-field>
+                        <input [formControlName]="'password'" type="password" matInput placeholder="Password">
+                        <mat-error *ngIf="signUpForm.controls['password'].invalid">{{getErrorMessage('password')}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-input">
+                    <mat-form-field>
+                        <input [formControlName]="'firstName'" type="text" matInput placeholder="First name">
+                        <mat-error *ngIf="signUpForm.controls['firstName'].invalid">{{getErrorMessage('firstName')}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-input">
+                    <mat-form-field>
+                        <input [formControlName]="'lastName'" type="text" matInput placeholder="Last name">
+                        <mat-error *ngIf="signUpForm.controls['lastName'].invalid">{{getErrorMessage('lastName')}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-input submit-btn-wr">
+                    <button mat-raised-button color="primary" type="submit" (click)="signUp()">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 @import '~@angular/material/theming';
-@import "../../../assets/styles/move-up-main";
+@import "../../../assets/styles/main";
 
 .title-wr {
     display: flex;
@@ -7,7 +7,7 @@
     background: #FFFFFF;
     padding: 20px;
     margin-bottom: 20px;
-    color: mat-color($move-up-app-primary);
+    color: mat-color($primary);
 
     .page-card-title {
         font-size: 24px;

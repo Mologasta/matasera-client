@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
 
 import { AppStorage } from '../helpers/app-storage';
 import { User } from '../classes/user';
 import { SessionModel } from '../interfaces/session.interface';
 import { Tokens } from '../interfaces/tokens.interface';
+import { BehaviorSubject, Observable } from 'rxjs/index';
 
 const APP_SESSION = 'session';
 const APP_USER = 'user';

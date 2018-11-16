@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
 
 import { Credentials } from '../interfaces/credentials.interface';
 import { ResponseModel } from '../classes/response';
@@ -18,13 +18,19 @@ export class AuthService {
     public signIn(credentials: Credentials): Observable<SessionModel> {
         return this.httpClient
             .post<ResponseModel<SessionModel>>(this.API_ROOT, credentials)
-            .map((response: ResponseModel<SessionModel>) => response.data);
+            .pipe(map((response: ResponseModel<SessionModel>) => response.data));
     }
 
     public logout(): Observable<any> {
         return this.httpClient
             .delete<ResponseModel<any>>(this.API_ROOT)
-            .map((response: ResponseModel<any>) => response.data);
+            .pipe(map((response: ResponseModel<any>) => response.data));
+    }
+
+    public signUp(data): Observable<SessionModel> {
+        return this.httpClient
+            .post<ResponseModel<SessionModel>>(API_ROUTES.USERS, data)
+            .pipe(map((response: ResponseModel<SessionModel>) => response.data));
     }
 
 }

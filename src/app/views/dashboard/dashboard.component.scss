@@ -1,5 +1,4 @@
-@import '~@angular/material/theming';
-@import "../../../assets/styles/move-up-main";
+@import "../../../assets/styles/main";
 
 /*MAIN STYLES*/
 .container {
@@ -12,73 +11,15 @@
     right: 0;
 }
 
+.header-toolbar {
+    justify-content: flex-end;
+}
+
 .is-mobile .header-toolbar {
     position: fixed;
     z-index: 2;
 }
 
-.sidenav-container-wr {
-    flex: 1;
-}
-
 .is-mobile .sidenav-container-wr {
     flex: 1 0 auto;
-}
-
-.sidenav-container {
-    min-width: 300px;
-    max-width: 100vw;
-    padding: 30px 10px 10px 10px;
-    height: 100%;
-    box-sizing: border-box;
-    background-color: mat-color($move-up-app-primary);
-}
-/*ADMIN STYLES*/
-.user-wr {
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5px 5px 5px 25px;
-    color: #FFFFFF;
-
-    .avatar-wr {
-        display: flex;
-        $width: 100px;
-        width: $width;
-        height: $width;
-
-        img {
-            object-fit: cover;
-            border-radius: $width / 2;
-        }
-    }
-
-    .name {
-        display: flex;
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-    .role {
-        font-size: 14px;
-    }
-}
-/*NAVIGATION STYLES*/
-.nav-item {
-    position: relative;
-    padding-left: 10px;
-    color: #FFFFFF !important;
-
-    &:before {
-        $circle-diam: 10px;
-        content: '';
-        position: absolute;
-        top: calc(50% - 5px);
-        left: 10px;
-        background: #FFFFFF;
-        width: $circle-diam;
-        height: $circle-diam;
-        border-radius: $circle-diam / 2;
-    }
 }

@@ -19,34 +19,7 @@ export class DashboardComponent implements OnInit {
     public avatarPlaceholder = 'assets/img/avatar-placeholder.png';
 
     public navigation = [
-        {
-            title: 'Requests from riders',
-            link: ['/riders', 'requests']
-        },
-        {
-            title: 'Requests from drivers',
-            link: ['/drivers', 'requests']
-        },
-        {
-            title: 'List of drivers',
-            link: ['/drivers']
-        },
-        {
-            title: 'List of riders',
-            link: ['/riders']
-        },
-        {
-            title: 'List of update requests',
-            link: ['/riders', 'update-requests']
-        },
-        {
-            title: 'Fare management',
-            link: ['/fares', 'management']
-        },
-        {
-            title: 'Settings',
-            link: ['/settings']
-        }
+
     ];
 
     constructor(private changeDetectorRef: ChangeDetectorRef,

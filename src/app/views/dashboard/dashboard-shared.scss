@@ -1,5 +1,5 @@
 @import '~@angular/material/theming';
-@import "../../../assets/styles/move-up-main";
+@import "../../../assets/styles/main";
 
 /*EMPTY PLACEHOLDER STYLES*/
 .empty-list {
@@ -92,15 +92,15 @@
     display: flex;
     padding: 10px;
     text-align: center;
-    color: mat-color($move-up-app-primary);
-    background-color: mat-color($move-up-app-primary, 50);
-    border: 1px solid mat-color($move-up-app-primary);
+    color: mat-color($primary);
+    background-color: mat-color($primary, 50);
+    border: 1px solid mat-color($primary);
     border-radius: 10px;
     white-space: nowrap;
 
     &.selected {
         color: #FFFFFF;
-        background-color: mat-color($move-up-app-primary, 800);
+        background-color: mat-color($primary, 800);
     }
 }
 
@@ -128,7 +128,7 @@
 .list-attr-wr {
     padding-left: 0;
     list-style: none;
-    color: mat-color($move-up-app-primary, 700);
+    color: mat-color($primary, 700);
 
     .list-attr {
         display: flex;
@@ -136,7 +136,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 14px 0;
-        border-bottom: 1px solid mat-color($move-up-app-primary, 100);
+        border-bottom: 1px solid mat-color($primary, 100);
 
         &:last-child {
             border-bottom: 0;
@@ -152,18 +152,18 @@
 .list-attr-label {
     display: flex;
     flex-direction: column;
-    color: mat-color($move-up-app-primary, 700);
+    color: mat-color($primary, 700);
     margin-bottom: 5px;
 }
 .list-attr-value {
     display: flex;
     flex-direction: column;
     font-weight: bold;
-    color: mat-color($move-up-app-primary, 700);
+    color: mat-color($primary, 700);
 }
 
 .border-bottom {
-    border-bottom: 1px solid mat-color($move-up-app-primary, 100);
+    border-bottom: 1px solid mat-color($primary, 100);
 }
 
 .no-border-bottom {
@@ -181,12 +181,12 @@
 }
 
 .outline-bottom {
-    border-bottom: 1px solid mat-color($move-up-app-primary, 100);
+    border-bottom: 1px solid mat-color($primary, 100);
     margin-bottom: 25px;
 }
 
 .outline-top {
-    border-top: 1px solid mat-color($move-up-app-primary, 100);
+    border-top: 1px solid mat-color($primary, 100);
     margin-top: 25px;
 }
 

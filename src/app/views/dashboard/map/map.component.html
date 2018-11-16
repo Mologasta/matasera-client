@@ -1,0 +1,25 @@
+<app-route-wrap [cardView]="false">
+    <div page-card-title>Map</div>
+    <div page-card-button>
+        <button type="button" mat-flat-button color="primary" (click)="add()">Add image</button>
+    </div>
+    <div page-content>
+        <mat-card>
+            <div class="row">
+                <agm-map  class="map" [latitude]="coords.lat" [longitude]="coords.long" [fitBounds]="true">
+                    <!--<agm-marker *ngIf="marker" [title]="marker.name" (dragEnd)="onMarkerDragEnd($event)" [markerDraggable]="!changeLocationLocked"-->
+                                <!--[latitude]="marker.lat" [longitude]="marker.lng">-->
+                    <!--</agm-marker>-->
+                </agm-map>
+
+                <!--<div class="venue__search" [hidden]="changeLocationLocked">-->
+                    <!--<input type="text" class="form-control" #placesAutoComplete [disabled]="address.isProcessing" (keydown.enter)="$event.preventDefault()">-->
+                <!--</div>-->
+
+                <!--<div *ngIf="!marker && submitted">-->
+                    <!--<label class="my-error">{{TEXTS.ENTER_LOCATION}}</label>-->
+                <!--</div>-->
+            </div>
+        </mat-card>
+    </div>
+</app-route-wrap>

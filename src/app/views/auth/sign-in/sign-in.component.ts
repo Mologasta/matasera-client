@@ -51,6 +51,10 @@ export class SignInComponent implements OnInit {
         }
     }
 
+    public signUp() {
+        this.router.navigate(['sign-up'])
+    }
+
     public getErrorMessage(fieldName: string): string {
         const controlErrors = this.signInForm.controls[fieldName].errors;
         let errorText = 'error';

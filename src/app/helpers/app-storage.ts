@@ -1,5 +1,5 @@
 export class AppStorage<T> {
-    private static readonly APP_PREFIX = 'moveup';
+    private static readonly APP_PREFIX = 'matasera';
 
     private readonly key: string;
     private readonly storage: Storage;

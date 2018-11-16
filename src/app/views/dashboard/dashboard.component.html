@@ -1,35 +1,12 @@
 <div class="container" [class.is-mobile]="mobileQuery.matches">
-    <mat-sidenav-container class="sidenav-container-wr">
-        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches"
-                     [fixedInViewport]="mobileQuery.matches">
-            <div class="sidenav-container">
-                <div class="user-wr" *ngIf="admin">
-                    <div class="avatar-wr">
-                        <img [src]="admin.photo || avatarPlaceholder" alt="Avatar" class="avatar">
-                    </div>
-                    <div class="name">{{admin.firstName}} {{admin.lastName}}</div>
-                    <div class="role">admin</div>
-                </div>
-                <mat-nav-list>
-                    <a class="nav-item" mat-list-item [routerLink]="nav.link" *ngFor="let nav of navigation">{{nav.title}}</a>
-                </mat-nav-list>
-            </div>
-        </mat-sidenav>
-
-        <mat-sidenav-content>
-            <mat-toolbar class="header-toolbar">
-                <button mat-icon-button (click)="snav.toggle()">
-                    <mat-icon>menu</mat-icon>
-                </button>
-                <div class="fill-space"></div>
-                <button mat-button (click)="logout()">
-                    <mat-icon>exit_to_app</mat-icon>
-                    Log Out
-                </button>
-            </mat-toolbar>
-            <div class="content" [style.paddingTop.px]="mobileQuery.matches ? 56 : 0">
-                <router-outlet></router-outlet>
-            </div>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+    <mat-toolbar class="header-toolbar">
+        <div class="fill-space"></div>
+        <button mat-button (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            Log Out
+        </button>
+    </mat-toolbar>
+    <div class="content" [style.paddingTop.px]="mobileQuery.matches ? 56 : 0">
+        <router-outlet></router-outlet>
+    </div>
 </div>

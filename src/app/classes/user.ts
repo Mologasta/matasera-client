@@ -5,7 +5,6 @@ export class User {
     readonly email: string;
     readonly createdAt: string;
     readonly updatedAt: string;
-    photo: string;
 
     constructor (user) {
         this.id = user.id;
@@ -14,6 +13,5 @@ export class User {
         this.email = user.email;
         this.createdAt = user.createdAt;
         this.updatedAt = user.updatedAt;
-        this.photo = user.photo;
     }
 }

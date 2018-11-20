@@ -17,6 +17,7 @@ import {
     MatSortModule,
     MatTableModule,
     MatSelectModule,
+    MatDialogModule,
     MatToolbarModule
 } from '@angular/material';
 import { MediaMatcher } from '@angular/cdk/layout';
@@ -29,6 +30,7 @@ import { UsersService } from '../../services/users.service';
 import { MapComponent } from './map/map.component';
 import { environment } from '../../../environments/environment';
 import { AgmCoreModule } from '@agm/core';
+import {ImagesService} from '../../services/images.service';
 
 @NgModule({
     imports: [
@@ -41,6 +43,7 @@ import { AgmCoreModule } from '@agm/core';
         ModalsModule,
         MatIconModule,
         MatButtonModule,
+        MatDialogModule,
         MatListModule,
         MatToolbarModule,
         MatTableModule,
@@ -66,6 +69,7 @@ import { AgmCoreModule } from '@agm/core';
     providers: [
         MediaMatcher,
         UsersService,
+        ImagesService,
     ]
 })
 export class DashboardModule {

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
 import { ResponseModel } from '../classes/response';
-import { RequestParams } from '../classes/request-params';
 import { API_ROUTES } from '../app.constants';
 import { Image } from '../classes/image';
 import { map } from 'rxjs/internal/operators';
@@ -16,22 +15,23 @@ export class ImagesService {
     constructor(private httpClient: HttpClient) {
     }
 
-    getList(params: RequestParams): Observable<ResponseModel<Image[]>> {
-        let httpParams = new HttpParams()
-            .set('limit', `${params.limit}`)
-            .set('offset', `${params.offset}`);
+    getList(data): Observable<ResponseModel<Image[]>> {
+        const httpParams = new HttpParams()
+            .append('lat', data.lat)
+            .append('lng', data.lng)
+            .append('radius', data.radius);
 
         return this.httpClient
             .get<ResponseModel<Image[]>>(this.API_URL, {params: httpParams});
     }
 
-    upload(image: Blob, lat?: number, long?: number): Observable<Image> {
+    upload(image: Blob, lat?: number, lng?: number): Observable<Image> {
         let formData = new FormData();
         formData.append("image", image);
 
-        if(lat && long) {
+        if(lat && lng) {
             formData.append('lat', `${lat}`);
-            formData.append('long', `${long}`);
+            formData.append('lng', `${lng}`);
         }
 
         return this.httpClient

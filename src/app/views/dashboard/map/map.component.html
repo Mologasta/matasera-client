@@ -6,8 +6,8 @@
     <div page-content>
         <mat-card>
             <div class="row">
-                <agm-map  class="map" [latitude]="coords.lat" [longitude]="coords.long" [fitBounds]="true" (mapClick)="add($event)">
-                    <agm-marker *ngFor="let pin of pins" [latitude]="pin.lat" [longitude]="pin.lng">
+                <agm-map  class="map" [latitude]="coords.lat" [longitude]="coords.lng" [fitBounds]="true" (mapClick)="add($event)">
+                    <agm-marker *ngFor="let pin of pins" [latitude]="pin.location.coordinates[1]" [longitude]="pin.location.coordinates[0]">
                     </agm-marker>
                 </agm-map>
             </div>

@@ -3,7 +3,7 @@ export const PAGINATION_PARAMETERS = {
     OFFSET: 0
 };
 
-export const imagePlaceholder   = "assets/img/no-image-icon.png";
+export const imagePlaceholder = "assets/img/noimage.jpg";
 
 export const API_ROUTES = {
     SESSIONS: '/sessions',

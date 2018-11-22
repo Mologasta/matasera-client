@@ -8,9 +8,32 @@
             <div class="row">
                 <agm-map  class="map" [latitude]="coords.lat" [longitude]="coords.lng" [fitBounds]="true" (mapClick)="add($event)">
                     <agm-marker *ngFor="let pin of pins" [latitude]="pin.location.coordinates[1]" [longitude]="pin.location.coordinates[0]">
+                        <agm-info-window>
+                            <div class="marker">
+                                <img src="{{pin.path}}" class="marker-image">
+                                <button type="button" class="marker-btn" mat-flat-button color="primary" (click)="openDetailedView(pin)">Open Detailed</button>
+                            </div>
+                        </agm-info-window>
                     </agm-marker>
                 </agm-map>
             </div>
         </mat-card>
+        <mat-card *ngIf="preview" class="preview">
+            <img src="{{preview.path}}" class="preview-image">
+        </mat-card>
+        <div *ngIf="preview">
+            <mat-card class="preview" *ngFor="let comment of comments">
+                <div class="comment-section">
+                    <div class="comment">
+                        <div class="comment-text">{{ comment.text }}</div>
+                        <div class="comment-date">{{ comment.createdAt | date }}</div>
+                    </div>
+                </div>
+            </mat-card>
+            <div class="add-comment">
+                <textarea matInput cols="3" rows="4" #comment class="comment-input"></textarea>
+                <button type="button" class="add-comment-btn" mat-flat-button color="primary" (click)="leaveComment(comment.value, preview.id)">Leave comment</button>
+            </div>
+        </div>
     </div>
 </app-route-wrap>

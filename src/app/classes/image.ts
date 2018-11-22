@@ -1,6 +1,6 @@
 export class Image {
     readonly id?: number;
-    readonly url: string;
+    readonly path: string;
     readonly lacation: {
         coordinates: number[]
     };
@@ -9,7 +9,7 @@ export class Image {
 
     constructor (image) {
         this.id = image.id;
-        this.url = image.url;
+        this.path = image.path;
         this.lacation = image.lacation;
         this.createdAt = image.createdAt;
         this.updatedAt = image.updatedAt;

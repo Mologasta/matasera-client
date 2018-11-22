@@ -7,6 +7,7 @@ import { ResponseModel } from '../classes/response';
 import { API_ROUTES } from '../app.constants';
 import { Image } from '../classes/image';
 import { map } from 'rxjs/internal/operators';
+import { ImageComment } from '../classes/comment';
 
 @Injectable()
 export class ImagesService {
@@ -37,5 +38,16 @@ export class ImagesService {
         return this.httpClient
             .post<ResponseModel<Image>>(API_ROUTES.IMAGES, formData)
             .pipe(map((response: ResponseModel<Image>) => response.data));
+    }
+
+    getComments(imageId: number): Observable<ResponseModel<ImageComment[]>> {
+        return this.httpClient
+            .get<ResponseModel<ImageComment[]>>(`${this.API_URL}/${imageId}/comments`);
+    }
+
+    addComment(data, imageId: number): Observable<ImageComment> {
+        return this.httpClient
+            .post<ResponseModel<ImageComment>>(`${this.API_URL}/${imageId}/comments`, data)
+            .pipe(map((response: ResponseModel<ImageComment>) => response.data));
     }
 }

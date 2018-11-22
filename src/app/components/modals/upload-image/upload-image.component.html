@@ -5,10 +5,11 @@
 <div mat-dialog-content>
     <img [src]="imgPreview" class="image">
     <div class="form-wr">
+        <button type="button" md-button mat-button class="upload-btn" (click)="imgInput.click()">Add a photo</button>
         <input type="file" #imgInput (change)="initPreview(imgInput)" class="file-input">
     </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="action-btn">
     <button mat-button (click)="onCancelClick()">Cancel</button>
     <button mat-button [mat-dialog-close]="true" (click)="uploadClick(imgInput)" cdkFocusInitial>Upload</button>
 </div>

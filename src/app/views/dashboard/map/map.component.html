@@ -5,9 +5,17 @@
     </div>
     <div page-content>
         <mat-card>
-            <div class="row">
-                <agm-map  class="map" [latitude]="coords.lat" [longitude]="coords.lng" [fitBounds]="true" (mapClick)="add($event)">
-                    <agm-marker *ngFor="let pin of pins" [latitude]="pin.location.coordinates[1]" [longitude]="pin.location.coordinates[0]">
+            <div class="row map-wrap">
+                <form [formGroup]="mapForm">
+                    <div class="form-input">
+                        <mat-form-field>
+                            <input [formControlName]="'distance'" type="email" matInput placeholder="Distance">
+                            <mat-error *ngIf="mapForm.controls['distance'].invalid">{{getErrorMessage('distance')}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                </form>
+                <agm-map #map class="map" [usePanning]="true" [latitude]="coords.lat" [longitude]="coords.lng" [fitBounds]="true" (mapReady)="mapReady($event)" (mapClick)="add($event)">
+                    <agm-marker *ngFor="let pin of pins" [latitude]="pin.location.lat" [longitude]="pin.location.lng">
                         <agm-info-window>
                             <div class="marker">
                                 <img src="{{pin.path}}" class="marker-image">
@@ -16,6 +24,7 @@
                         </agm-info-window>
                     </agm-marker>
                 </agm-map>
+                <button type="button" class="search-btn" mat-flat-button color="primary" (click)="getList()">Search here</button>
             </div>
         </mat-card>
         <mat-card *ngIf="preview" class="preview">

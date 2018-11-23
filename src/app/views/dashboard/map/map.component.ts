@@ -1,30 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { ImagesService } from '../../../services/images.service';
-import { Image } from '../../../classes/image';
-import { LatLngPositionEvent } from '../../../interfaces/position.interface';
-import { MatDialog } from '@angular/material';
-import { UploadImageComponent } from '../../../components/modals/upload-image/upload-image.component';
-import { environment } from '../../../../environments/environment';
-import { ImageComment } from '../../../classes/comment';
+import {Component, OnInit} from '@angular/core';
+import {ImagesService} from '../../../services/images.service';
+import {Image} from '../../../classes/image';
+import {LatLngPositionEvent} from '../../../interfaces/position.interface';
+import {MatDialog} from '@angular/material';
+import {UploadImageComponent} from '../../../components/modals/upload-image/upload-image.component';
+import {environment} from '../../../../environments/environment';
+import {ImageComment} from '../../../classes/comment';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {MAP_FORM_CONTROLS, MAP_FORM_ERRORS} from './map.configs';
+import {GoogleMapsAPIWrapper} from '@agm/core';
 
 @Component({
     selector: 'app-map',
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.scss']
 })
-export class MapComponent  implements OnInit {
+export class MapComponent implements OnInit {
     public coords = environment.defaultCoords;
-    public pins: Image[];
+    public pins: Image[] = [];
     public comments: ImageComment[] = [];
     public preview: Image;
+    public mapForm: FormGroup;
+    public gMap: GoogleMapsAPIWrapper;
 
-    constructor( private imagesService: ImagesService, public dialog: MatDialog ) {
+    constructor(private imagesService: ImagesService,
+                private formBuilder: FormBuilder,
+                public dialog: MatDialog) {
     }
 
     ngOnInit() {
-        this.imagesService.getList(this.coords).subscribe(response => {
-            this.pins = response.data;
-        })
+        this.initForm();
+        this.getList();
+
+    }
+
+    private initForm(): void {
+        this.mapForm = this.formBuilder.group(MAP_FORM_CONTROLS);
+    }
+
+    protected mapReady(map) {
+        this.gMap = map;
+        this.gMap.setCenter({lat: this.coords.lat, lng: this.coords.lng});
+        this.gMap.panTo({lat: this.coords.lat, lng: this.coords.lng})
     }
 
     public add(event?: LatLngPositionEvent): void {
@@ -36,18 +53,18 @@ export class MapComponent  implements OnInit {
             }
         });
 
-        dialogRef.afterClosed().subscribe( result => {
+        dialogRef.afterClosed().subscribe(result => {
             if (result) {
 
                 this.imagesService.upload(result, event.coords && event.coords.lat, event.coords && event.coords.lng)
-                    .subscribe( res => {
-                    this.pins.push(res);
-                })
+                    .subscribe(res => {
+                        this.pins.push(res);
+                    });
             }
-        })
+        });
     }
 
-    public openDetailedView (pin: Image): void {
+    public openDetailedView(pin: Image): void {
         this.imagesService.getComments(pin.id).subscribe(response => {
             this.comments = response.data;
         });
@@ -56,8 +73,37 @@ export class MapComponent  implements OnInit {
     }
 
     public leaveComment(text: string, id: number) {
-        this.imagesService.addComment( { text }, id).subscribe(response => {
+        this.imagesService.addComment({text}, id).subscribe(response => {
             this.comments.push(response);
         });
+    }
+
+    public getList(): void {
+        if(this.gMap) {
+            const latLng = this.gMap.getCenter();
+            this.coords.lat = latLng.lat();
+            this.coords.lng = latLng.lng()
+        }
+
+        const formValues = this.mapForm.value;
+        this.coords.radius = formValues.distance;
+        this.imagesService.getList(this.coords).subscribe(response => {
+            this.pins = response.data;
+        })
+    }
+
+    public getErrorMessage(fieldName: string): string {
+        const controlErrors = this.mapForm.controls[fieldName].errors;
+        let errorText = 'error';
+        Object.keys(controlErrors).forEach((error) => {
+            if (error) {
+                return errorText = this.obtainErrorText(fieldName, error);
+            }
+        });
+        return errorText;
+    }
+
+    private obtainErrorText(fieldName: string, errorName: string): string {
+        return MAP_FORM_ERRORS[fieldName][errorName];
     }
 }

@@ -2,7 +2,8 @@ export class Image {
     readonly id?: number;
     readonly path: string;
     readonly lacation: {
-        coordinates: number[]
+        lat: number,
+        lng: number,
     };
     readonly createdAt?: string;
     readonly updatedAt?: string;

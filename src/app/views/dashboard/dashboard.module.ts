@@ -31,6 +31,7 @@ import { MapComponent } from './map/map.component';
 import { environment } from '../../../environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import {ImagesService} from '../../services/images.service';
+import {NotifierService} from '../../services/notifier.service';
 
 @NgModule({
     imports: [
@@ -70,6 +71,7 @@ import {ImagesService} from '../../services/images.service';
         MediaMatcher,
         UsersService,
         ImagesService,
+        NotifierService,
     ]
 })
 export class DashboardModule {

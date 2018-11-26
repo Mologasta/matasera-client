@@ -9,7 +9,7 @@
                 <form [formGroup]="mapForm">
                     <div class="form-input">
                         <mat-form-field>
-                            <input [formControlName]="'distance'" type="email" matInput placeholder="Distance">
+                            <input [formControlName]="'distance'" type="email" matInput placeholder="Distance(km)">
                             <mat-error *ngIf="mapForm.controls['distance'].invalid">{{getErrorMessage('distance')}}</mat-error>
                         </mat-form-field>
                     </div>
@@ -28,7 +28,7 @@
             </div>
         </mat-card>
         <mat-card *ngIf="preview" class="preview">
-            <img src="{{preview.path}}" class="preview-image">
+            <img id="preview" src="{{preview.path}}" class="preview-image">
         </mat-card>
         <div *ngIf="preview">
             <mat-card class="preview" *ngFor="let comment of comments">

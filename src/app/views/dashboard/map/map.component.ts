@@ -9,6 +9,7 @@ import {ImageComment} from '../../../classes/comment';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MAP_FORM_CONTROLS, MAP_FORM_ERRORS} from './map.configs';
 import {GoogleMapsAPIWrapper} from '@agm/core';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-map',
@@ -25,6 +26,7 @@ export class MapComponent implements OnInit {
 
     constructor(private imagesService: ImagesService,
                 private formBuilder: FormBuilder,
+                private router: Router,
                 public dialog: MatDialog) {
     }
 
@@ -56,7 +58,7 @@ export class MapComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
 
-                this.imagesService.upload(result, event.coords && event.coords.lat, event.coords && event.coords.lng)
+                this.imagesService.upload(result, event && event.coords.lat, event && event.coords.lng)
                     .subscribe(res => {
                         this.pins.push(res);
                     });
@@ -80,13 +82,13 @@ export class MapComponent implements OnInit {
 
     public getList(): void {
         if(this.gMap) {
-            const latLng = this.gMap.getCenter();
+            const latLng: any = this.gMap.getCenter();
             this.coords.lat = latLng.lat();
             this.coords.lng = latLng.lng()
         }
 
         const formValues = this.mapForm.value;
-        this.coords.radius = formValues.distance;
+        this.coords.radius = formValues.distance / 112.2;
         this.imagesService.getList(this.coords).subscribe(response => {
             this.pins = response.data;
         })

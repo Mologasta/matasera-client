@@ -3,6 +3,8 @@ export const PAGINATION_PARAMETERS = {
     OFFSET: 0
 };
 
+export const EARTH_RADIUS = 6371;
+
 export const imagePlaceholder = "assets/img/noimage.jpg";
 
 export const API_ROUTES = {

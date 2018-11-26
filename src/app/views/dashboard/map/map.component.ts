@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {MAP_FORM_CONTROLS, MAP_FORM_ERRORS} from './map.configs';
 import {GoogleMapsAPIWrapper} from '@agm/core';
 import {Router} from '@angular/router';
+import {EARTH_RADIUS} from '../../../app.constants';
 
 @Component({
     selector: 'app-map',
@@ -88,7 +89,7 @@ export class MapComponent implements OnInit {
         }
 
         const formValues = this.mapForm.value;
-        this.coords.radius = formValues.distance / 112.2;
+        this.coords.radius = formValues.distance / EARTH_RADIUS;
         this.imagesService.getList(this.coords).subscribe(response => {
             this.pins = response.data;
         })
